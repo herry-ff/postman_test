@@ -509,7 +509,7 @@
 							},
 							{
 								"key": "Host",
-								"value": " d2p-api.1000.com",
+								"value": "{{d2p_url}}",
 								"type": "text"
 							},
 							{
@@ -529,7 +529,7 @@
 							},
 							{
 								"key": "Referer",
-								"value": " https://app.1000.com/",
+								"value": " {{admin_url}}/",
 								"type": "text"
 							},
 							{
@@ -553,12 +553,10 @@
 							"raw": "{\"goodsData\":[{\"id\":\"g2737015\",\"itemNum\":1,\"ownId\":\"\",\"warehouseId\":0,\"supplierId\":\"{{SupplierShopId}}\"}]}"
 						},
 						"url": {
-							"raw": "https://d2p-api.1000.com//cart/add",
+							"raw": "https://{{d2p_url}}//cart/add",
 							"protocol": "https",
 							"host": [
-								"d2p-api",
-								"1000",
-								"com"
+								"{{d2p_url}}"
 							],
 							"path": [
 								"",
@@ -604,8 +602,6 @@
 									"",
 									"//将订单号传入环境变量",
 									"pm.environment.set(\"onlineTradeOne\",onlineTradeOne.data[0].tid);",
-									"",
-									"",
 									"",
 									"tests[\"Response time is less than 10000ms\"] = responseTime < 10000;"
 								],
@@ -660,12 +656,12 @@
 							},
 							{
 								"key": "Host",
-								"value": " d2p-api.1000.com",
+								"value": "{{d2p_url}}",
 								"type": "text"
 							},
 							{
 								"key": "Origin",
-								"value": " https://app.1000.com",
+								"value": "{{admin_url}}",
 								"type": "text"
 							},
 							{
@@ -685,7 +681,7 @@
 							},
 							{
 								"key": "Referer",
-								"value": " https://app.1000.com/",
+								"value": "{{admin_url}}/",
 								"type": "text"
 							},
 							{
@@ -699,12 +695,10 @@
 							"raw": "{\"tradingFormMap\":{\"0_A1225063\":{\"receiptId\":\"201810247287703\",\"shipId\":\"A1225063:100020694\",\"expectDeliverDate\":\"\",\"paymentType\":\"GRP\",\"payTypeObj\":{\"pname\":\"货到付款\",\"pid\":\"GRP\",\"tip\":\"送货上门后再收款，支持现金、POS机刷卡、支票支付\",\"porder\":4},\"msg\":\"\",\"hasInvoice\":0,\"invoiceType\":0,\"invoiceTitle\":\"\",\"taxNumber\":\"\",\"offsetMoney\":0,\"fullGiftGoodsInfo\":\"\",\"orderFee\":4402.6,\"specialPrice\":\"\",\"type\":6,\"couponId\":\"\",\"shipCouponId\":\"\",\"attachment\":\"\",\"version\":\"PC\"}},\"sourceType\":\"purchase\",\"purchaseDemandId\":null}"
 						},
 						"url": {
-							"raw": "https://d2p-api.1000.com/online/purchase/submit",
+							"raw": "https://{{d2p_url}}/online/purchase/submit",
 							"protocol": "https",
 							"host": [
-								"d2p-api",
-								"1000",
-								"com"
+								"{{d2p_url}}"
 							],
 							"path": [
 								"online",
