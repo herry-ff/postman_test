@@ -1080,6 +1080,7 @@
 									"",
 									"",
 									"tests[\"Response time is less than 10000ms\"] = responseTime < 10000;",
+									"setTimeout(()=>console.log('等待'), 3000);",
 									""
 								],
 								"type": "text/javascript"
