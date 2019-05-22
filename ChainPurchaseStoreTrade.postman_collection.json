@@ -873,7 +873,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://d2p-api2.qianmi2.com:8080/chain/purchase/export/download?success=true&exportId=A945301CHAIN_PURCHASE_STORE9827e2871d7a9ae49ba3c77e38631848&ftpHost=192.168.65.252&ftpUserName=yxtc&ftpPassword=Yx_tCenter_Qianmi&ftpPath={{ftpPath}}",
+							"raw": "http://d2p-api2.qianmi2.com:8080/chain/purchase/export/download?exportId={{exportID}}",
 							"protocol": "http",
 							"host": [
 								"d2p-api2",
@@ -1344,7 +1344,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://d2p-api2.qianmi2.com:8080/chain/purchase/export/download?success=true&exportId=A945301CHAIN_PURCHASE_STORE9827e2871d7a9ae49ba3c77e38631848&ftpHost=192.168.65.252&ftpUserName=yxtc&ftpPassword=Yx_tCenter_Qianmi&ftpPath={{ftpPath}}",
+							"raw": "http://d2p-api2.qianmi2.com:8080/chain/purchase/export/download?exportId={{exportID}}",
 							"protocol": "http",
 							"host": [
 								"d2p-api2",
