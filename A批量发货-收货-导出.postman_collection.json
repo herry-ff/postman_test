@@ -1,0 +1,3080 @@
+{
+	"info": {
+		"_postman_id": "c4749ea3-6480-40b0-82e0-12ee562a60a8",
+		"name": "A批量发货|收货|导出",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "场景一 未开配送-批量发货",
+			"item": [
+				{
+					"name": "PC侧登录 Copy Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/javascript, */*; q=0.01",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://login2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "al",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "c",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "e",
+									"value": "26N0sbxfCH",
+									"type": "text"
+								},
+								{
+									"key": "p",
+									"value": "0c722fa69d3ef2f1137f8f892b740b9db4ff92e7363471aacbee8bf4e3b334218aweSJ",
+									"type": "text"
+								},
+								{
+									"key": "su",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "u",
+									"value": "13911111111mznJr",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://login2.qianmi2.com:8080/login.php?",
+							"protocol": "http",
+							"host": [
+								"login2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"login.php"
+							],
+							"query": [
+								{
+									"key": "0.4013073859918128",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC侧选择店铺 Copy Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "reqId",
+								"value": "abd51830-715c-11e9-9c4a-673a43531337",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shop2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": "0031",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": "pc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"shopId\":\"A897447\"}"
+						},
+						"url": {
+							"raw": "http://app-api2.qianmi2.com:8080/api/store/updateSession",
+							"protocol": "http",
+							"host": [
+								"app-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"store",
+								"updateSession"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC代客下单",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"pm.environment.unset(\"tradeNO\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": " http://app2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": " pc",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": " http://app2.qianmi2.com:8080/",
+								"type": "text"
+							},
+							{
+								"key": "reqId",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": " 0033",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"A945919\",\"shopId\":\"A945598\",\"buyNumMap\":{\"g170949\":2},\"receiptId\":\"20190611276080\",\"shipId\":\"100007622\",\"paymentType\":\"GRP\",\"paymentName\":\"货到付款\",\"consignee\":{\"receiptId\":\"20190611276080\",\"addressId\":\"20190611276080\",\"adminId\":\"A945598\",\"province\":\"北京\",\"provinceCode\":\"110000\",\"city\":\"北京市\",\"cityCode\":\"110100\",\"area\":\"东城区\",\"areaCode\":\"110101\",\"street\":\"全区\",\"streetCode\":\"110101000\",\"detailAddress\":\"软件大道\",\"postcode\":null,\"defaultReceipt\":\"1\",\"name\":\"方方\",\"mobilePhone\":\"15195862767\",\"telephone\":null,\"isDefault\":\"1\",\"index\":0},\"manualDiscount\":0,\"manualPriceMap\":{},\"fullGiftGoodsInfo\":\"\",\"inStorePickup\":false,\"couponId\":null,\"shipCouponId\":null,\"invoiceType\":0,\"offsetMoney\":0,\"logisticsPrice\":null,\"invoiceTitle\":\"\",\"buyerRemarks\":\"\",\"sellerRemarks\":\"\",\"employeeId\":null,\"expectDeliverDate\":\"\",\"sortSkuIds\":[\"g170949\"],\"itemRemarkMap\":{}}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/sellerorder/create/submit",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"sellerorder",
+								"create",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC审核",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080//order/orderPay",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"order",
+								"orderPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-单笔-不输入物流",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a46cb08e-e42d-4d70-9db4-772dd19fae77",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.failNum===0){",
+									"   pm.test(\"批量发货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderDeliveryList\":[{\"tid\":\"{{tradeNO}}\",\"shipMethodId\":\"\",\"shipMethodName\":\"\",\"logisticsID\":\"\",\"selectedShipCompany\":\"\",\"selectedDate\":\"\",\"logisticsPrice\":\"\"}]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/delivery-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"delivery-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC代客下单 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"pm.environment.unset(\"variable_key\");",
+									"pm.environment.unset(\"tradeNO\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": " http://app2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": " pc",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": " http://app2.qianmi2.com:8080/",
+								"type": "text"
+							},
+							{
+								"key": "reqId",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": " 0033",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"A945919\",\"shopId\":\"A945598\",\"buyNumMap\":{\"g170949\":2},\"receiptId\":\"20190611276080\",\"shipId\":\"100007622\",\"paymentType\":\"GRP\",\"paymentName\":\"货到付款\",\"consignee\":{\"receiptId\":\"20190611276080\",\"addressId\":\"20190611276080\",\"adminId\":\"A945598\",\"province\":\"北京\",\"provinceCode\":\"110000\",\"city\":\"北京市\",\"cityCode\":\"110100\",\"area\":\"东城区\",\"areaCode\":\"110101\",\"street\":\"全区\",\"streetCode\":\"110101000\",\"detailAddress\":\"软件大道\",\"postcode\":null,\"defaultReceipt\":\"1\",\"name\":\"方方\",\"mobilePhone\":\"15195862767\",\"telephone\":null,\"isDefault\":\"1\",\"index\":0},\"manualDiscount\":0,\"manualPriceMap\":{},\"fullGiftGoodsInfo\":\"\",\"inStorePickup\":false,\"couponId\":null,\"shipCouponId\":null,\"invoiceType\":0,\"offsetMoney\":0,\"logisticsPrice\":null,\"invoiceTitle\":\"\",\"buyerRemarks\":\"\",\"sellerRemarks\":\"\",\"employeeId\":null,\"expectDeliverDate\":\"\",\"sortSkuIds\":[\"g170949\"],\"itemRemarkMap\":{}}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/sellerorder/create/submit",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"sellerorder",
+								"create",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC审核 Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080//order/orderPay",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"order",
+								"orderPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-单笔-输入物流",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "df1f40e7-d42b-4950-a64a-0132507a9c3a",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.failNum===0){",
+									"   pm.test(\"批量发货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderDeliveryList\":[{\"tid\":\"{{tradeNO}}\",\"shipMethodId\":\"\",\"shipMethodName\":\"\",\"logisticsID\":\"123213\",\"selectedShipCompany\":\"{{companyId}}\",\"selectedDate\":\"\",\"logisticsPrice\":\"5\"}]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/delivery-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"delivery-order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "场景二 开配送-单笔-批量收货+批量发货",
+			"item": [
+				{
+					"name": "PC侧登录",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/javascript, */*; q=0.01",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://login2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "al",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "c",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "e",
+									"value": "26N0sbxfCH",
+									"type": "text"
+								},
+								{
+									"key": "p",
+									"value": "0c722fa69d3ef2f1137f8f892b740b9db4ff92e7363471aacbee8bf4e3b334218aweSJ",
+									"type": "text"
+								},
+								{
+									"key": "su",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "u",
+									"value": "13911111111mznJr",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://login2.qianmi2.com:8080/login.php?",
+							"protocol": "http",
+							"host": [
+								"login2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"login.php"
+							],
+							"query": [
+								{
+									"key": "0.4013073859918128",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC侧选择店铺",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "reqId",
+								"value": "abd51830-715c-11e9-9c4a-673a43531337",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shop2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": "0031",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": "pc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"shopId\":\"A897447\"}"
+						},
+						"url": {
+							"raw": "http://app-api2.qianmi2.com:8080/api/store/updateSession",
+							"protocol": "http",
+							"host": [
+								"app-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"store",
+								"updateSession"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC代客下单",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"pm.environment.unset(\"variable_key\");",
+									"pm.environment.unset(\"tradeNO\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": " http://app2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": " pc",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": " http://app2.qianmi2.com:8080/",
+								"type": "text"
+							},
+							{
+								"key": "reqId",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": " 0033",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"A945919\",\"shopId\":\"A945598\",\"buyNumMap\":{\"g170949\":2},\"receiptId\":\"20190611276080\",\"shipId\":\"100007622\",\"paymentType\":\"GRP\",\"paymentName\":\"货到付款\",\"consignee\":{\"receiptId\":\"20190611276080\",\"addressId\":\"20190611276080\",\"adminId\":\"A945598\",\"province\":\"北京\",\"provinceCode\":\"110000\",\"city\":\"北京市\",\"cityCode\":\"110100\",\"area\":\"东城区\",\"areaCode\":\"110101\",\"street\":\"全区\",\"streetCode\":\"110101000\",\"detailAddress\":\"软件大道\",\"postcode\":null,\"defaultReceipt\":\"1\",\"name\":\"方方\",\"mobilePhone\":\"15195862767\",\"telephone\":null,\"isDefault\":\"1\",\"index\":0},\"manualDiscount\":0,\"manualPriceMap\":{},\"fullGiftGoodsInfo\":\"\",\"inStorePickup\":false,\"couponId\":null,\"shipCouponId\":null,\"invoiceType\":0,\"offsetMoney\":0,\"logisticsPrice\":null,\"invoiceTitle\":\"\",\"buyerRemarks\":\"\",\"sellerRemarks\":\"\",\"employeeId\":null,\"expectDeliverDate\":\"\",\"sortSkuIds\":[\"g170949\"],\"itemRemarkMap\":{}}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/sellerorder/create/submit",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"sellerorder",
+								"create",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC审核",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080//order/orderPay",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"order",
+								"orderPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-单笔-选择自有配送",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									"",
+									"pm.environment.set(\"shipMethodName\", \"tms\");",
+									"pm.environment.set(\"shipMethodId\", \"tms\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5484205-60ab-497e-93ce-3fdf82cb3fa6",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.failNum===0){",
+									"   pm.test(\"批量发货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderDeliveryList\":[{\"tid\":\"{{tradeNO}}\",\"shipMethodId\":\"{{shipMethodId}}\",\"shipMethodName\":\"{{shipMethodName}}\",\"logisticsID\":\"\",\"selectedShipCompany\":\"\",\"selectedDate\":\"\",\"logisticsPrice\":\"\"}]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/delivery-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"delivery-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-单笔-批量收货",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									"",
+									"pm.environment.set(\"shipMethodName\", \"tms\");",
+									"pm.environment.set(\"shipMethodId\", \"tms\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4820f17e-cb03-4974-a7b2-38160bfcc07c",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.failNum===0){",
+									"   pm.test(\"批量收货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/confirm-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"confirm-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC代客下单 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"",
+									"pm.environment.unset(\"tradeNO\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": " http://app2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": " pc",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": " http://app2.qianmi2.com:8080/",
+								"type": "text"
+							},
+							{
+								"key": "reqId",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": " 0033",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"A945919\",\"shopId\":\"A945598\",\"buyNumMap\":{\"g170949\":2},\"receiptId\":\"20190611276080\",\"shipId\":\"100007622\",\"paymentType\":\"GRP\",\"paymentName\":\"货到付款\",\"consignee\":{\"receiptId\":\"20190611276080\",\"addressId\":\"20190611276080\",\"adminId\":\"A945598\",\"province\":\"北京\",\"provinceCode\":\"110000\",\"city\":\"北京市\",\"cityCode\":\"110100\",\"area\":\"东城区\",\"areaCode\":\"110101\",\"street\":\"全区\",\"streetCode\":\"110101000\",\"detailAddress\":\"软件大道\",\"postcode\":null,\"defaultReceipt\":\"1\",\"name\":\"方方\",\"mobilePhone\":\"15195862767\",\"telephone\":null,\"isDefault\":\"1\",\"index\":0},\"manualDiscount\":0,\"manualPriceMap\":{},\"fullGiftGoodsInfo\":\"\",\"inStorePickup\":false,\"couponId\":null,\"shipCouponId\":null,\"invoiceType\":0,\"offsetMoney\":0,\"logisticsPrice\":null,\"invoiceTitle\":\"\",\"buyerRemarks\":\"\",\"sellerRemarks\":\"\",\"employeeId\":null,\"expectDeliverDate\":\"\",\"sortSkuIds\":[\"g170949\"],\"itemRemarkMap\":{}}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/sellerorder/create/submit",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"sellerorder",
+								"create",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC审核 Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080//order/orderPay",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"order",
+								"orderPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC代客下单 Copy Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO2\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"",
+									"pm.environment.unset(\"tradeNO2\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": " http://app2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": " pc",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": " http://app2.qianmi2.com:8080/",
+								"type": "text"
+							},
+							{
+								"key": "reqId",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": " 0033",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"A945919\",\"shopId\":\"A945598\",\"buyNumMap\":{\"g170949\":2},\"receiptId\":\"20190611276080\",\"shipId\":\"100007622\",\"paymentType\":\"GRP\",\"paymentName\":\"货到付款\",\"consignee\":{\"receiptId\":\"20190611276080\",\"addressId\":\"20190611276080\",\"adminId\":\"A945598\",\"province\":\"北京\",\"provinceCode\":\"110000\",\"city\":\"北京市\",\"cityCode\":\"110100\",\"area\":\"东城区\",\"areaCode\":\"110101\",\"street\":\"全区\",\"streetCode\":\"110101000\",\"detailAddress\":\"软件大道\",\"postcode\":null,\"defaultReceipt\":\"1\",\"name\":\"方方\",\"mobilePhone\":\"15195862767\",\"telephone\":null,\"isDefault\":\"1\",\"index\":0},\"manualDiscount\":0,\"manualPriceMap\":{},\"fullGiftGoodsInfo\":\"\",\"inStorePickup\":false,\"couponId\":null,\"shipCouponId\":null,\"invoiceType\":0,\"offsetMoney\":0,\"logisticsPrice\":null,\"invoiceTitle\":\"\",\"buyerRemarks\":\"\",\"sellerRemarks\":\"\",\"employeeId\":null,\"expectDeliverDate\":\"\",\"sortSkuIds\":[\"g170949\"],\"itemRemarkMap\":{}}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/sellerorder/create/submit",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"sellerorder",
+								"create",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC审核 Copy Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO2}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080//order/orderPay",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"order",
+								"orderPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-2笔-选择物流配送-配送费为正数",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									"pm.environment.set(\"shipMethodName\", \"快递\");",
+									"pm.environment.set(\"shipMethodId\", \"express\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ccfa89d6-1afb-4608-ad0b-afb2645f1590",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.successNum===2){",
+									"   pm.test(\"批量发货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderDeliveryList\":[{\"tid\":\"{{tradeNO}}\",\"shipMethodId\":\"{{shipMethodId}}\",\"shipMethodName\":\"{{shipMethodName}}\",\"logisticsID\":\"\",\"selectedShipCompany\":\"{{companyId}}\",\"selectedDate\":\"\",\"logisticsPrice\":\"5\"},{\"tid\":\"{{tradeNO2}}\",\"shipMethodId\":\"{{shipMethodId}}\",\"shipMethodName\":\"{{shipMethodName}}\",\"logisticsID\":\"\",\"selectedShipCompany\":\"{{companyId}}\",\"selectedDate\":\"\",\"logisticsPrice\":\"1\"}]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/delivery-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"delivery-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量收货-2笔",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									"",
+									"pm.environment.set(\"shipMethodName\", \"tms\");",
+									"pm.environment.set(\"shipMethodId\", \"tms\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b5119ca-6e1d-4577-ab7d-e1620cb80e99",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.successNum===2){",
+									"   pm.test(\"批量收货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO}}\",\"{{tradeNO2}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/confirm-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"confirm-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC代客下单 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"pm.environment.unset(\"variable_key\");",
+									"pm.environment.unset(\"tradeNO\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": " http://app2.qianmi2.com:8080",
+								"type": "text"
+							},
+							{
+								"key": "Platform",
+								"value": " pc",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": " http://app2.qianmi2.com:8080/",
+								"type": "text"
+							},
+							{
+								"key": "reqId",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869",
+								"type": "text"
+							},
+							{
+								"key": "systemId",
+								"value": " 0033",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"A945919\",\"shopId\":\"A945598\",\"buyNumMap\":{\"g170949\":2},\"receiptId\":\"20190611276080\",\"shipId\":\"100007622\",\"paymentType\":\"GRP\",\"paymentName\":\"货到付款\",\"consignee\":{\"receiptId\":\"20190611276080\",\"addressId\":\"20190611276080\",\"adminId\":\"A945598\",\"province\":\"北京\",\"provinceCode\":\"110000\",\"city\":\"北京市\",\"cityCode\":\"110100\",\"area\":\"东城区\",\"areaCode\":\"110101\",\"street\":\"全区\",\"streetCode\":\"110101000\",\"detailAddress\":\"软件大道\",\"postcode\":null,\"defaultReceipt\":\"1\",\"name\":\"方方\",\"mobilePhone\":\"15195862767\",\"telephone\":null,\"isDefault\":\"1\",\"index\":0},\"manualDiscount\":0,\"manualPriceMap\":{},\"fullGiftGoodsInfo\":\"\",\"inStorePickup\":false,\"couponId\":null,\"shipCouponId\":null,\"invoiceType\":0,\"offsetMoney\":0,\"logisticsPrice\":null,\"invoiceTitle\":\"\",\"buyerRemarks\":\"\",\"sellerRemarks\":\"\",\"employeeId\":null,\"expectDeliverDate\":\"\",\"sortSkuIds\":[\"g170949\"],\"itemRemarkMap\":{}}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/sellerorder/create/submit",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"sellerorder",
+								"create",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC审核 Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tids\":[\"{{tradeNO}}\"]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080//order/orderPay",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"order",
+								"orderPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-单笔-选择物流配送为负数失败",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									"pm.environment.set(\"shipMethodName\", \"快递\");",
+									"pm.environment.set(\"shipMethodId\", \"express\");",
+									"var price = -1;",
+									"pm.environment.set(\"logisticsPrice\", price);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "acb747c5-efa5-4630-99a6-2f80403c9b10",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.failNum===1){",
+									"   pm.test(\"批量发货失败\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderDeliveryList\":[{\"tid\":\"{{tradeNO}}\",\"shipMethodId\":\"{{shipMethodId}}\",\"shipMethodName\":\"{{shipMethodName}}\",\"logisticsID\":\"123456789\",\"selectedShipCompany\":\"\",\"selectedDate\":\"\",\"logisticsPrice\":\"{{logisticsPrice}}\"}]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/delivery-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"delivery-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-单笔-选择物流配送为3位小数成功",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									"pm.environment.set(\"shipMethodName\", \"快递\");",
+									"pm.environment.set(\"shipMethodId\", \"express\");",
+									"var price = 1.999;",
+									"pm.environment.set(\"logisticsPrice\", price);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "acb747c5-efa5-4630-99a6-2f80403c9b10",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.failNum===0){",
+									"   pm.test(\"批量发货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderDeliveryList\":[{\"tid\":\"{{tradeNO}}\",\"shipMethodId\":\"{{shipMethodId}}\",\"shipMethodName\":\"{{shipMethodName}}\",\"logisticsID\":\"123456789\",\"selectedShipCompany\":\"\",\"selectedDate\":\"\",\"logisticsPrice\":\"{{logisticsPrice}}\"}]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/delivery-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"delivery-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PC-批量发货-单笔-选择物流配送费为0成功",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6996767-5740-4768-a1a0-c01c64dc28fa",
+								"exec": [
+									"//未开调度时:shipMethodId和shipMethodName不需要传",
+									"//开通调度后，选择自有配送，shipMethodId和shipMethodName=tms,选择物流时shipMethodId: \"express\" ,shipMethodName: \"快递\"",
+									"pm.environment.set(\"shipMethodName\", \"快递\");",
+									"pm.environment.set(\"shipMethodId\", \"express\");",
+									"var price = 0;",
+									"pm.environment.set(\"logisticsPrice\", price);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "acb747c5-efa5-4630-99a6-2f80403c9b10",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"if(json.data.failNum===0){",
+									"   pm.test(\"批量发货成功\"); ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderDeliveryList\":[{\"tid\":\"{{tradeNO}}\",\"shipMethodId\":\"{{shipMethodId}}\",\"shipMethodName\":\"{{shipMethodName}}\",\"logisticsID\":\"123456789\",\"selectedShipCompany\":\"\",\"selectedDate\":\"\",\"logisticsPrice\":\"{{logisticsPrice}}\"}]}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/batch/delivery-order",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"batch",
+								"delivery-order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "订单列表查询",
+			"item": [
+				{
+					"name": "高级查询-客户名称",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = \"普通小店\";",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"{{orderKeyWord}}\",\"goodsInfoOrBn\":\"\",\"consigneeNameOrReceiver\":\"\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "高级查询-手机号",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = 13911111111;",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"{{orderKeyWord}}\",\"goodsInfoOrBn\":\"\",\"consigneeNameOrReceiver\":\"\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "高级查询-商品名称",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = \"恒源祥\";",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"\",\"goodsInfoOrBn\":\"{{orderKeyWord}}\",\"consigneeNameOrReceiver\":\"\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "高级查询-货号",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = \"8897983442235341\";",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"\",\"goodsInfoOrBn\":\"{{orderKeyWord}}\",\"consigneeNameOrReceiver\":\"\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "高级查询-收货人姓名",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = \"方方\";",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"\",\"goodsInfoOrBn\":\"\",\"consigneeNameOrReceiver\":\"{{orderKeyWord}}\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "高级查询-收货人手机号",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = 15195862767;",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"\",\"goodsInfoOrBn\":\"\",\"consigneeNameOrReceiver\":\"{{orderKeyWord}}\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "高级查询-收货人姓名+商品名称",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = \"nova\";",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"\",\"goodsInfoOrBn\":\"恒源祥\",\"consigneeNameOrReceiver\":\"{{orderKeyWord}}\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "高级查询-收货人姓名+客户名称",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d128c877-4693-4285-8648-39b771c8b74b",
+								"exec": [
+									"var json=JSON.parse(responseBody);",
+									"var tid = json.data.tid;",
+									"pm.environment.set(\"tradeNO\",tid );"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "739176f7-049d-4f8a-9036-0d5502441ca8",
+								"exec": [
+									"//listType 1公海池 2订单 3 收款单 4客户经理",
+									"//,\"expectDeliverDate\":\"\",\"payDate\":\"\",\"deliverDate\":\"\",\"startEndDate\":\"\"",
+									"var keyWord = \"nova\";",
+									"pm.environment.set(\"orderKeyWord\", keyWord);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": " application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080"
+							},
+							{
+								"key": "Platform",
+								"type": "text",
+								"value": " pc"
+							},
+							{
+								"key": "Referer",
+								"type": "text",
+								"value": " http://app2.qianmi2.com:8080/"
+							},
+							{
+								"key": "reqId",
+								"type": "text",
+								"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+							},
+							{
+								"key": "systemId",
+								"type": "text",
+								"value": " 0033"
+							},
+							{
+								"key": "User-Agent",
+								"type": "text",
+								"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search\":\"\",\"tid\":\"\",\"storeNameOrLinkManMobile\":\"普通小店\",\"goodsInfoOrBn\":\"\",\"consigneeNameOrReceiver\":\"{{orderKeyWord}}\",\"saleManId\":\"\",\"deviceType\":\"\",\"saleAreaId\":\"\",\"invoiceFlag\":\"\"}"
+						},
+						"url": {
+							"raw": "http://d2p-api2.qianmi2.com:8080/order/list/v2/2",
+							"protocol": "http",
+							"host": [
+								"d2p-api2",
+								"qianmi2",
+								"com"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"list",
+								"v2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PC-查询物流方式",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b700edcd-5fe6-4c05-ba1a-a4a568b4ce0c",
+						"exec": [
+							"var json= JSON.parse(responseBody);",
+							"var shipCompany = json.data[0].id;",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a755a72a-1be2-47f8-9417-edd8a3bfe615",
+						"exec": [
+							"//  /**",
+							"//          * 物流配送方式编号",
+							"//          */",
+							"//         private String shipMethodId;",
+							"",
+							"//         /**",
+							"//          * 物流配送方式名称",
+							"//          */",
+							"//         private String shipMethodName;",
+							"",
+							"//         /**",
+							"//          *物流号码",
+							"//          */",
+							"",
+							"//         private String logisticsID;",
+							"",
+							"//         /**",
+							"//          *物流公司",
+							"//          */",
+							"// //    @NotEmpty(message=\"请选择物流公司\")",
+							"//         private String selectedShipCompany;",
+							"",
+							"//         /**",
+							"//          * 发货日期",
+							"//          */",
+							"",
+							"// //    @NotEmpty(message=\"请选择发货日期\")",
+							"//         private String selectedDate;",
+							"",
+							"//         /**",
+							"//          * 配送费用",
+							"//          */",
+							"//         private Double logisticsPrice;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": " application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": " http://app2.qianmi2.com:8080"
+					},
+					{
+						"key": "Platform",
+						"type": "text",
+						"value": " pc"
+					},
+					{
+						"key": "Referer",
+						"type": "text",
+						"value": " http://app2.qianmi2.com:8080/"
+					},
+					{
+						"key": "reqId",
+						"type": "text",
+						"value": " 0cfe1520-8da1-11e9-83ce-c16c48488869"
+					},
+					{
+						"key": "systemId",
+						"type": "text",
+						"value": " 0033"
+					},
+					{
+						"key": "User-Agent",
+						"type": "text",
+						"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://d2p-api2.qianmi2.com:8080/order/shipCompany",
+					"protocol": "http",
+					"host": [
+						"d2p-api2",
+						"qianmi2",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"order",
+						"shipCompany"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
